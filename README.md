@@ -38,5 +38,16 @@ It contains the energy distribution for the implemented x-rays source.This data 
 ### movement_32.placements
 It describes the movement of the pencil-beam over a 32x32 grid.
 ### steles
-This folder contains the stls files implemented in the simulations, including the coded apertures, the UD target, and the hand. The Hand stl was found in https://www.cgtrader.com/items/3001341/download-page. The boxes were defined using the basic shapes in GATE
+This folder contains the stls files implemented in the simulations, including the UD target, and the hand. The Hand stl was found in https://www.cgtrader.com/items/3001341/download-page. The boxes were defined using the basic shapes in GATE
+## Human Target
+In this folfer, you will find all the needed files to generate the human target implemented in the paper.
+### main.mac: 
+It contains all the conditions of the experiment.
+### spec_120.txt:
+It contains the energy distribution for the implemented x-rays source.This data can be generated using SPEKTR https://istar.jhu.edu/downloads/
+### movement_64.placements
+It describes the movement of the pencil-beam over a 64x64 grid.
+### steles
+This folder contains the stls files implemented in the simulations, including the human shape and the firearm. The Human shape stl was found in https://www.cgtrader.com/items/655802/download-page. The firearm was found in https://cults3d.com/en/3d-model/tool/the-phantom-s-guns-holsters.
+
 
