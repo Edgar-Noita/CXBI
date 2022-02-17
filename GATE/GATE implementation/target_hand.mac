@@ -1,0 +1,82 @@
+/gate/world/daughters/name hand
+
+/gate/world/daughters/insert tessellated
+/gate/hand/geometry/setPathToSTLFile steles/hand.stl
+/gate/hand/setMaterial Body
+#/gate/hand/placement/setRotationAxis 0 0 1
+#/gate/hand/placement/setRotationAngle -90 deg
+
+#/gate/hand/placement/setRotationAxis 1 0 0
+#/gate/hand/placement/setRotationAngle 180 deg
+
+/gate/hand/vis/forceSolid
+/gate/hand/vis/setColor yellow
+/gate/hand/placement/setTranslation  0 -5 49 cm
+
+
+#/gate/world/daughters/name gun
+
+#/gate/world/daughters/insert tessellated
+#/gate/gun/geometry/setPathToSTLFile steles/database/rotatedHand.stl
+#/gate/gun/setMaterial Gun
+#/gate/gun/placement/setRotationAxis 0 0 1
+#/gate/gun/placement/setRotationAngle 90 deg
+
+#/gate/gun/placement/setRotationAxis 0 0 0
+#/gate/gun/placement/setRotationAngle 90 deg
+
+#/gate/gun/vis/forceSolid
+#/gate/gun/vis/setColor blue
+#/gate/gun/placement/setTranslation  5 12 49 cm
+#/gate/hand/daughters/name ring
+#/gate/hand/daughters/insert sphere
+#/gate/ring/placement/setTranslation 0 14 -2 cm
+#/gate/ring/geometry/setRmin 0. mm
+#/gate/ring/geometry/setRmax 2. cm
+#/gate/ring/setMaterial  gold
+#/gate/ring/vis/setColor blue
+
+
+/gate/hand/daughters/name ring
+/gate/hand/daughters/insert cylinder
+/gate/ring/geometry/setRmin 1.2 cm
+/gate/ring/geometry/setRmax 1.5 cm
+/gate/ring/geometry/setHeight 1.2 cm
+/gate/ring/placement/setRotationAxis 1 0 0
+/gate/ring/placement/setRotationAngle 90. deg
+/gate/ring/placement/setTranslation 0 14 -1 cm
+/gate/ring/setMaterial Gold
+/gate/ring/vis/forceSolid
+/gate/ring/vis/setColor blue
+
+
+
+#/gate/world/daughters/name suspect1
+#/gate/world/daughters/insert box
+#/gate/suspect1/geometry/setXLength 15 cm
+#/gate/suspect1/geometry/setYLength 5 cm
+#/gate/suspect1/geometry/setZLength 10 mm
+#/gate/suspect1/placement/setTranslation 5 30 48 cm
+#/gate/suspect1/setMaterial Gun
+#/gate/suspect1/vis/setColor cyan
+#/gate/suspect1/vis/forceSolid
+
+#/gate/world/daughters/name suspect2
+#/gate/world/daughters/insert box
+#/gate/suspect2/geometry/setXLength 2 cm
+#/gate/suspect2/geometry/setYLength 2 cm
+#/gate/suspect2/geometry/setZLength 2 cm
+#/gate/suspect2/placement/setTranslation 1 1.5 48 cm
+#/gate/suspect2/setMaterial HMX
+#/gate/suspect2/vis/setColor cyan
+#/gate/suspect2/vis/forceSolid
+
+#/gate/world/daughters/insert tessellated
+#/gate/prueba_p1/geometry/setPathToSTLFile steles/UD_frame.stl
+#/gate/prueba_p1/setMaterial Aluminium
+
+
+#/gate/prueba_p1/vis/forceSolid
+#/gate/prueba_p1/vis/setColor red
+#/gate/prueba_p1/placement/setTranslation  -15 -15 50 cm
+

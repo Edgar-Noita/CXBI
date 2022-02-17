@@ -1,0 +1,55 @@
+/gate/world/daughters/name frame_test
+/gate/world/daughters/insert box
+/gate/frame_test/geometry/setXLength 28 cm
+/gate/frame_test/geometry/setYLength 28 cm
+/gate/frame_test/geometry/setZLength 10 mm
+/gate/frame_test/placement/setTranslation 0 0 50.5 cm
+/gate/frame_test/setMaterial Air
+/gate/frame_test/vis/forceWireframe
+/gate/frame_test/vis/setColor yellow
+
+
+/gate/frame_test/daughters/name block_1
+/gate/frame_test/daughters/insert box
+/gate/block_1/geometry/setXLength 7 cm
+/gate/block_1/geometry/setYLength 7 cm
+/gate/block_1/geometry/setZLength 10 mm
+/gate/block_1/placement/setTranslation 7 7 0 cm
+/gate/block_1/setMaterial Caffe
+/gate/block_1/vis/forceSolid
+/gate/block_1/vis/setColor blue
+
+
+
+/gate/frame_test/daughters/name block_2
+/gate/frame_test/daughters/insert box
+/gate/block_2/geometry/setXLength 7 cm
+/gate/block_2/geometry/setYLength 7 cm
+/gate/block_2/geometry/setZLength 10 mm
+/gate/block_2/placement/setTranslation 7 -7 0 cm
+/gate/block_2/setMaterial HMX
+/gate/block_2/vis/forceSolid
+/gate/block_2/vis/setColor yellow
+
+/gate/frame_test/daughters/name block_3
+/gate/frame_test/daughters/insert box
+/gate/block_3/geometry/setXLength 7 cm
+/gate/block_3/geometry/setYLength 7 cm
+/gate/block_3/geometry/setZLength 10 mm
+/gate/block_3/placement/setTranslation -7 7 0 cm
+/gate/block_3/setMaterial HMX
+/gate/block_3/vis/forceSolid
+/gate/block_3/vis/setColor cyan
+
+/gate/frame_test/daughters/name block_4
+/gate/frame_test/daughters/insert box
+/gate/block_4/geometry/setXLength 7 cm
+/gate/block_4/geometry/setYLength 7 cm
+/gate/block_4/geometry/setZLength 10 mm
+/gate/block_4/placement/setTranslation -7 -7 0 cm
+/gate/block_4/setMaterial Caffe
+/gate/block_4/vis/forceSolid
+/gate/block_4/vis/setColor white
+
+
+/gate/block_2/attachPhantomSD
