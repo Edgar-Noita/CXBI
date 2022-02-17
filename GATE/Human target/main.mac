@@ -1,0 +1,132 @@
+
+####
+#Generation of the ground-truth
+###
+
+#Universe
+/gate/geometry/setMaterialDatabase GateMaterials.db
+/gate/world/geometry/setXLength 1800. cm
+/gate/world/geometry/setYLength 1000. cm
+/gate/world/geometry/setZLength 1000. cm
+/gate/world/setMaterial Air
+
+#Physical processes simulated
+/gate/physics/addProcess Compton
+/gate/physics/processes/Compton/setModel PenelopeModel
+/gate/physics/addProcess PhotoElectric
+/gate/physics/processes/PhotoElectric/setModel PenelopeModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess Bremsstrahlung e-
+/gate/physics/processes/Bremsstrahlung/setModel PenelopeModel e-
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+
+#Volume used to move the source
+/gate/world/daughters/name source_volume
+/gate/world/daughters/insert cylinder
+/gate/source_volume/geometry/setRmin 0. mm
+/gate/source_volume/geometry/setRmax 1 mm
+/gate/source_volume/geometry/setHeight 1 mm
+/gate/source_volume/placement/setTranslation 0 0 0 cm
+/gate/source_volume/setMaterial Air
+/gate/source_volume/vis/forceWireframe
+/gate/source_volume/vis/setColor blue
+
+
+#Scintillating Plates
+/gate/world/daughters/name OpticalSystem
+/gate/world/daughters/insert box
+/gate/OpticalSystem/geometry/setXLength 100 cm
+/gate/OpticalSystem/geometry/setYLength 50 cm
+/gate/OpticalSystem/geometry/setZLength 6 cm
+/gate/OpticalSystem/placement/setTranslation 0 0 20.5 cm
+/gate/OpticalSystem/setMaterial Air
+/gate/OpticalSystem/daughters/name crystal
+/gate/OpticalSystem/daughters/insert box
+/gate/crystal/geometry/setXLength 30. cm
+/gate/crystal/geometry/setYLength 50 cm
+/gate/crystal/geometry/setZLength 5 cm
+/gate/crystal/placement/setTranslation 0 0 0.5 cm
+/gate/crystal/setMaterial NaI
+/gate/crystal/vis/setColor white
+/gate/crystal/vis/forceSolid
+/gate/crystal/repeaters/insert cubicArray
+/gate/crystal/cubicArray/setRepeatNumberX 2
+/gate/crystal/cubicArray/setRepeatNumberY 1
+/gate/crystal/cubicArray/setRepeatNumberZ 1
+/gate/crystal/cubicArray/setRepeatVector 70 0 0.00 cm
+/gate/systems/OpticalSystem/crystal/attach crystal
+/gate/crystal/attachCrystalSD
+/gate/OpticalSystem/daughters/name pixel
+/gate/OpticalSystem/daughters/insert box
+/gate/pixel/geometry/setXLength 30 cm
+/gate/pixel/geometry/setYLength 50 cm
+/gate/pixel/geometry/setZLength 1 cm
+/gate/pixel/setMaterial Silicon
+/gate/pixel/placement/setTranslation 0 0 -2.5 cm
+/gate/pixel/vis/setColor yellow
+/gate/pixel/vis/forceSolid
+/gate/pixel/repeaters/insert cubicArray
+/gate/pixel/cubicArray/setRepeatNumberX 2
+/gate/pixel/cubicArray/setRepeatNumberY 1
+/gate/pixel/cubicArray/setRepeatNumberZ 1
+/gate/pixel/cubicArray/setRepeatVector 70 70 0 cm
+/gate/systems/OpticalSystem/pixel/attach pixel
+
+#Output-digitizer
+/gate/digitizer/Singles/insert adder
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/convertor/verbose 0
+/gate/digitizer/verbose 0
+
+#Insert generic movement
+/gate/source_volume/moves/insert genericMove
+/gate/source_volume/genericMove/setPlacementsFilename mov_human.placements
+
+
+#Outputroot files
+/gate/output/root/setFileName output
+/gate/output/root/setRootHitFlag 0
+/gate/output/root/setRootSinglesFlag 1
+/gate/output/root/setRootNtupleFlag 0
+/gate/output/root/setRootOpticalFlag 0
+
+#Target; to change the target, please comment lines 132 to 138. Then call /control/execute/target_hand.mac (for hand), and /control/execute/target_box.mac (for squares)
+/gate/world/daughters/name prueba_p
+/gate/world/daughters/insert tessellated
+/gate/prueba_p/geometry/setPathToSTLFile steles/UD1CM.stl
+/gate/prueba_p/setMaterial Aluminium
+/gate/prueba_p/vis/forceSolid
+/gate/prueba_p/vis/setColor yellow
+/gate/prueba_p/placement/setTranslation -11 -6.3 50 cm
+#####
+
+/gate/run/initialize
+/vis/disable
+
+#Pencil-beam source
+/gate/source/addSource xraygun gps
+/gate/source/xraygun/gps/particle gamma
+/gate/source/xraygun/gps/energytype UserSpectrum
+/gate/source/xraygun/gps/setSpectrumFile spec_120.txt
+/gate/source/xraygun/setActivity 5000 becquerel
+/gate/source/xraygun/gps/type Plane
+/gate/source/xraygun/gps/shape Circle
+/gate/source/xraygun/gps/radius 0.006 um
+/gate/source/xraygun/gps/mintheta 179.6 deg
+/gate/source/xraygun/gps/maxtheta 180 deg
+/gate/source/xraygun/gps/centre 0 0 0 cm
+/gate/source/xraygun/gps/angtype iso
+/gate/source/xraygun/attachTo source_volume
+
+/gate/random/setEngineName MersenneTwister
+
+/gate/application/setTimeSlice 1 s
+/gate/application/setTimeStart 0 s
+/gate/application/setTimeStop 1024 s
+/gate/random/setEngineSeed 3198611703547087212
+
+
+
