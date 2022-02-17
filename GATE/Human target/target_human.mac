@@ -1,15 +1,10 @@
+
+#Human target with gun on it
+
 /gate/world/daughters/name prueba_human
-
 /gate/world/daughters/insert tessellated
-#/gate/prueba_human/geometry/setPathToSTLFile steles/newBodyImage(4).stl
-#/gate/prueba_human/geometry/setPathToSTLFile steles/newBody_4.stl
-/gate/prueba_human/geometry/setPathToSTLFile steles/newBody_3.stl
-#/gate/prueba_human/geometry/setPathToSTLFile steles/man_woman.stl
-#/gate/prueba_human/geometry/setPathToSTLFile steles/woman.stl
+/gate/prueba_human/geometry/setPathToSTLFile steles/newBodyImage.stl
 /gate/prueba_human/setMaterial Body
-#/gate/prueba_human/placement/setRotationAxis 0 1 0
-#/gate/prueba_human/placement/setRotationAngle -90 deg
-
 /gate/prueba_human/vis/forceSolid
 /gate/prueba_human/vis/setColor yellow
 /gate/prueba_human/placement/setTranslation  0  0  150 cm
@@ -19,63 +14,13 @@
 /gate/world/daughters/name gun
 
 /gate/world/daughters/insert tessellated
-/gate/gun/geometry/setPathToSTLFile steles/database/bottle/3.stl
+/gate/gun/geometry/setPathToSTLFile steles/4.stl
 /gate/gun/setMaterial Gun
 /gate/gun/placement/setRotationAxis 1 0 0
 /gate/gun/placement/setRotationAngle -90 deg
-
-#/gate/gun/placement/setRotationAxis 0 0 0
-#/gate/gun/placement/setRotationAngle 90 deg
 
 /gate/gun/vis/forceSolid
 /gate/gun/vis/setColor blue
 /gate/gun/placement/setTranslation  10 12 130 cm
 
-
-/gate/world/daughters/name gun2
-
-/gate/world/daughters/insert tessellated
-/gate/gun2/geometry/setPathToSTLFile steles/database/guns/8.stl
-/gate/gun2/setMaterial Gun
-/gate/gun2/placement/setRotationAxis 0 1 0
-/gate/gun2/placement/setRotationAngle 90 deg
-
-#/gate/gun2/placement/setRotationAxis 0 0 0
-#/gate/gun2/placement/setRotationAngle 90 deg
-
-/gate/gun2/vis/forceSolid
-/gate/gun2/vis/setColor blue
-/gate/gun2/placement/setTranslation  -10 12 130 cm
-
-
-
-
-#/gate/world/daughters/name suspect1
-#/gate/world/daughters/insert box
-#/gate/suspect1/geometry/setXLength 15 cm
-#/gate/suspect1/geometry/setYLength 5 cm
-#/gate/suspect1/geometry/setZLength 10 mm
-#/gate/suspect1/placement/setTranslation 5 30 48 cm
-#/gate/suspect1/setMaterial Gun
-#/gate/suspect1/vis/setColor cyan
-#/gate/suspect1/vis/forceSolid
-
-#/gate/world/daughters/name suspect2
-#/gate/world/daughters/insert box
-#/gate/suspect2/geometry/setXLength 2 cm
-#/gate/suspect2/geometry/setYLength 2 cm
-#/gate/suspect2/geometry/setZLength 2 cm
-#/gate/suspect2/placement/setTranslation 1 1.5 48 cm
-#/gate/suspect2/setMaterial HMX
-#/gate/suspect2/vis/setColor cyan
-#/gate/suspect2/vis/forceSolid
-
-#/gate/world/daughters/insert tessellated
-#/gate/prueba_p1/geometry/setPathToSTLFile steles/UD_frame.stl
-#/gate/prueba_p1/setMaterial Aluminium
-
-
-#/gate/prueba_p1/vis/forceSolid
-#/gate/prueba_p1/vis/setColor red
-#/gate/prueba_p1/placement/setTranslation  -15 -15 50 cm
 
