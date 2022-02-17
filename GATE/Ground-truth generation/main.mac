@@ -103,6 +103,9 @@
 /gate/prueba_p/placement/setTranslation -11 -6.3 50 cm
 #####
 
+/gate/run/initialize
+/vis/disable
+
 #Pencil-beam source
 /gate/source/addSource xraygun gps
 /gate/source/xraygun/gps/particle gamma
