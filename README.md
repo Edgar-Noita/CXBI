@@ -60,6 +60,13 @@ Python script that implements the ADDM algorithm, with FFDNET as denoiser. The F
 # Data organization-Dose Analysis
 This folder contains the files to calculate the dose for the hand.
 ## 2_mm.mat
-This file contains the time at
+This file contains the energies of the 
 ## BW.mat
-This file contains a binary mask where the "ones" are the pixels on the hand that are affected by the 
+This file contains a binary mask where the "ones" are the pixels on the hand that are affected by the radiation
+## mus_skel.matt 
+This file contains the Mas-attenuation coefficients to calculate the radiation. Please see the following link https://physics.nist.gov/PhysRefData/XrayMassCoef/ComTab/muscle.html
+## dose_estimation.mat
+This files estimates the dose per pixel; notice that given that not all energy points are defined mus_skel.mat, an interpolation is done to fill the missing data
+## dose_hand.mat
+This file calculates the final dose for the hand, based on the results of dose_estimation.mat, the binary mask, and the coded aperture.
+
