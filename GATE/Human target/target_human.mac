@@ -14,13 +14,13 @@
 /gate/world/daughters/name gun
 
 /gate/world/daughters/insert tessellated
-/gate/gun/geometry/setPathToSTLFile steles/4.stl
+/gate/gun/geometry/setPathToSTLFile steles/2.stl
 /gate/gun/setMaterial Gun
 /gate/gun/placement/setRotationAxis 1 0 0
 /gate/gun/placement/setRotationAngle -90 deg
 
 /gate/gun/vis/forceSolid
 /gate/gun/vis/setColor blue
-/gate/gun/placement/setTranslation  10 12 130 cm
+/gate/gun/placement/setTranslation  20 12 130 cm
 
 
