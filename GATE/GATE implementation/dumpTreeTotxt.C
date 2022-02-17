@@ -5,7 +5,7 @@
 using namespace std;
 
 void dumpTreeTotxt(){
-  TFile *f=new TFile("air.root"); // opens the root file
+  TFile *f=new TFile("name_of_file.root"); // opens the root file
   TTree *tr=(TTree*)f->Get("Singles"); // creates the TTree object
   tr->Scan(); // prints the content on the screen
 
@@ -19,7 +19,7 @@ tr->SetBranchAddress("energy",&a);
 tr->SetBranchAddress("time",&b);
 //tr->SetBranchAddress("globalPosZ",&c);
   ofstream myfile;
-  myfile.open ("air.txt");
+  myfile.open ("name_of_file.txt");
  // myfile << "CrystalLastHitPos_Z CrystalLastHitEnergy\n";
 
   for (int i=0;i<tr->GetEntries();i++){
