@@ -1,3 +1,6 @@
+###############
+#Implementation of the 4 boxes target (caffeined-HMX)
+#############
 /gate/world/daughters/name frame_test
 /gate/world/daughters/insert box
 /gate/frame_test/geometry/setXLength 28 cm
@@ -52,4 +55,3 @@
 /gate/block_4/vis/setColor white
 
 
-/gate/block_2/attachPhantomSD
