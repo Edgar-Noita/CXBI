@@ -33,7 +33,7 @@ This folder contains the stls files implemented in the simulations, including th
 ### dumpTreeToTxt.C
 This file extracts the the data from the root files in txt format. Please refer to https://root-forum.cern.ch/t/conversion-of-root-file/25813/22?page=2 for the original file
 ### data
-Folder that contains the measurements vector extracted from GATE for 1% transmittance, 10% transmittance and 50% transmittance
+Folder that contains the measurements vector extracted from GATE for 1% transmittance, 10% transmittance and 50% transmittance, and their respective coded apertures
 ## Ground-truth generation
 In this folder, you will find all the needed files to generate the groundtruth images
 ### main.mac: 
