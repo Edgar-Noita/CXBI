@@ -59,21 +59,21 @@ This folder contains the stls files implemented in the simulations, including th
 
 # Data organization-Reconstructions
 This folder contains the files to run the reconstruction algorithms.
-## admm_bm3d.m
+### admm_bm3d.m
 Matlab file that implementy the ADMM algorihtm, with BM3D as denoiser. The BM3D was dowloaded from 
-## admm_ffdnet.py
+### admm_ffdnet.py
 Python script that implements the ADDM algorithm, with FFDNET as denoiser. The FFDNET files and trained networks were downloaded from 
 
 # Data organization-Dose Analysis
 This folder contains the files to calculate the dose for the hand.
-## 2_mm.mat
+### 2_mm.mat
 This file contains the energies of the 
-## BW.mat
+### BW.mat
 This file contains a binary mask where the "ones" are the pixels on the hand that are affected by the radiation
-## mus_skel.matt 
+### mus_skel.matt 
 This file contains the Mas-attenuation coefficients to calculate the radiation. Please see the following link https://physics.nist.gov/PhysRefData/XrayMassCoef/ComTab/muscle.html
-## dose_estimation.mat
+### dose_estimation.mat
 This files estimates the dose per pixel; notice that given that not all energy points are defined mus_skel.mat, an interpolation is done to fill the missing data
-## dose_hand.mat
+### dose_hand.mat
 This file calculates the final dose for the hand, based on the results of dose_estimation.mat, the binary mask, and the coded aperture. 
 
