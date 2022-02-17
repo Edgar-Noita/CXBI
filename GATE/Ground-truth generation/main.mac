@@ -1,8 +1,29 @@
+
+####
+#Generation of the ground-truth
+###
+
+#Universe
 /gate/geometry/setMaterialDatabase GateMaterials.db
 /gate/world/geometry/setXLength 1800. cm
 /gate/world/geometry/setYLength 1000. cm
 /gate/world/geometry/setZLength 1000. cm
 /gate/world/setMaterial Air
+
+#Physical processes simulated
+/gate/physics/addProcess Compton
+/gate/physics/processes/Compton/setModel PenelopeModel
+/gate/physics/addProcess PhotoElectric
+/gate/physics/processes/PhotoElectric/setModel PenelopeModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess Bremsstrahlung e-
+/gate/physics/processes/Bremsstrahlung/setModel PenelopeModel e-
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+
+#Volume used to move the source
 /gate/world/daughters/name source_volume
 /gate/world/daughters/insert cylinder
 /gate/source_volume/geometry/setRmin 0. mm
@@ -13,23 +34,8 @@
 /gate/source_volume/vis/forceWireframe
 /gate/source_volume/vis/setColor blue
 
-/gate/physics/addProcess Compton
-/gate/physics/processes/Compton/setModel PenelopeModel
-/gate/physics/addProcess PhotoElectric
-/gate/physics/processes/PhotoElectric/setModel PenelopeModel
-/gate/physics/addProcess RayleighScattering
-/gate/physics/processes/RayleighScattering/setModel PenelopeModel
-/gate/physics/addProcess Bremsstrahlung e-
-/gate/physics/processes/Bremsstrahlung/setModel PenelopeModel e-
-/gate/physics/addProcess Scintillation
-/gate/physics/addProcess OpticalAbsorption
-/gate/physics/addProcess OpticalRayleigh
-/gate/physics/addProcess OpticalBoundary
-/gate/physics/addProcess OpticalMie
-/gate/physics/addProcess OpticalWLS
-/gate/physics/processList Enabled
-/gate/physics/processList Initialized
 
+#Scintillating Plates
 /gate/world/daughters/name OpticalSystem
 /gate/world/daughters/insert box
 /gate/OpticalSystem/geometry/setXLength 100 cm
@@ -69,56 +75,27 @@
 /gate/pixel/cubicArray/setRepeatVector 70 70 0 cm
 /gate/systems/OpticalSystem/pixel/attach pixel
 
+#Output-digitizer
 /gate/digitizer/Singles/insert adder
 /gate/digitizer/Singles/insert readout
 /gate/digitizer/convertor/verbose 0
 /gate/digitizer/verbose 0
 
+#Insert generic movement
 /gate/source_volume/moves/insert genericMove
+/gate/source_volume/genericMove/setPlacementsFilename mov_data_base_32.placements
 
-/gate/output/root/setFileName paper_sim/count/images/UD_641
+
+#Outputroot files
+/gate/output/root/setFileName output
 /gate/output/root/setRootHitFlag 0
 /gate/output/root/setRootSinglesFlag 1
 /gate/output/root/setRootNtupleFlag 0
 /gate/output/root/setRootOpticalFlag 0
-/gate/world/daughters/name frame_human
-/gate/world/daughters/insert box
-/gate/frame_human/geometry/setXLength 28 cm
-/gate/frame_human/geometry/setYLength 28 cm
-/gate/frame_human/geometry/setZLength 10 cm
-/gate/frame_human/placement/setTranslation 0 0 53 cm
-/gate/frame_human/setMaterial Water
-/gate/frame_human/vis/forceWireframe
-/gate/frame_human/vis/setColor yellow
-/gate/world/daughters/name gun
-/gate/world/daughters/insert tessellated
-/gate/gun/geometry/setPathToSTLFile steles/database/guns/4.stl
-/gate/gun/setMaterial Gun
-/gate/gun/placement/setRotationAxis 0 1 0
-/gate/gun/placement/setRotationAngle -90 deg
-/gate/gun/vis/forceSolid
-/gate/gun/vis/setColor blue
-/gate/gun/placement/setTranslation 0 0 46 cm
 
-/gate/run/initialize
-/gate/verbose Physic 0
-/gate/verbose Cuts 0
-/gate/verbose SD 0
-/gate/verbose Actions 0
-/gate/verbose Actor 0
-/gate/verbose Step 0
-/gate/verbose Error 0
-/gate/verbose Warning 0
-/gate/verbose Output 0
-/gate/verbose Beam 0
-/gate/verbose Volume 0
-/gate/verbose Image 0
-/gate/verbose Geometry 0
-/gate/verbose Core 0
-/run/verbose 0
-/event/verbose 0
-/tracking/verbose 0
-/gate/output/verbose 0
+
+
+#Pencil-beam source
 /gate/source/addSource xraygun gps
 /gate/source/xraygun/gps/particle gamma
 /gate/source/xraygun/gps/energytype UserSpectrum
@@ -139,6 +116,6 @@
 /gate/application/setTimeStart 0 s
 /gate/application/setTimeStop 1024 s
 /gate/random/setEngineSeed 3198611703547087212
-/gate/output/root/enable
-/gate/application/startDAQCluster 0 256 0 s
+
+
 
