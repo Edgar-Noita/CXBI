@@ -10,3 +10,10 @@ Reconstructions  were run using denoising-prior based inverse problem algorithms
 
 
 ![main_fig_3](https://user-images.githubusercontent.com/85708477/154503590-11a044bf-79ab-48fb-9b04-2d767e9d2efe.png)
+
+# Data organization
+
+The files in this repository are organized as follows: 
+## GATE implementation (Figs. 5 and 6 of the paper)
+
+
