@@ -28,3 +28,15 @@ This folder contains the stls files implemented in the simulations, including th
 In this folder, the root files from the simulation results are saved
 ### dumpTreeToTxt.C
 This file extracts the the data from the root files in txt format. Please refer to https://root-forum.cern.ch/t/conversion-of-root-file/25813/22?page=2 for the original file
+
+## Ground-truth generation
+In this folder, you will find all the needed files to generate the groundtruth images
+### main.mac: 
+It contains all the conditions of the experiment.
+### spec_120.txt:
+It contains the energy distribution for the implemented x-rays source.This data can be generated using SPEKTR https://istar.jhu.edu/downloads/
+## movement_32.placements
+It describes the movement of the pencil-beam over a 32x32 grid.
+### steles
+This folder contains the stls files implemented in the simulations, including the coded apertures, the UD target, and the hand. The Hand stl was found in https://www.cgtrader.com/items/3001341/download-page. The boxes were defined using the basic shapes in GATE
+
