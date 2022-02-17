@@ -1,8 +1,15 @@
+########
+#Implementation of the experiment in GATE
+########
+
+##Universe
 /gate/geometry/setMaterialDatabase GateMaterials.db
 /gate/world/geometry/setXLength 250. cm
 /gate/world/geometry/setYLength 250. cm
 /gate/world/geometry/setZLength 250. cm
 /gate/world/setMaterial Air
+
+##Physical processes modeled in GATE
 /gate/physics/addProcess Compton
 /gate/physics/processes/Compton/setModel PenelopeModel
 /gate/physics/addProcess PhotoElectric
@@ -14,6 +21,7 @@
 /gate/physics/processList Enabled
 /gate/physics/processList Initialized
 
+##Collimator implemented to block unwanted radiation
 /gate/world/daughters/name wall_frame_up
 /gate/world/daughters/insert box
 /gate/wall_frame_up/geometry/setXLength 10 cm
@@ -50,14 +58,17 @@
 /gate/wall_frame_right/setMaterial Tungsten
 /gate/wall_frame_right/vis/forceSolid
 /gate/wall_frame_right/vis/setColor cyan
+
+##Coded aperture STL
 /gate/world/daughters/name wall_front_1
 /gate/world/daughters/insert tessellated
-/gate/wall_front_1/geometry/setPathToSTLFile steles/64_size.stl
+/gate/wall_front_1/geometry/setPathToSTLFile steles/32_32_2.stl
 /gate/wall_front_1/setMaterial Tungsten
 /gate/wall_front_1/vis/forceSolid
 /gate/wall_front_1/vis/setColor cyan
 /gate/wall_front_1/placement/setTranslation -34.5 -34.5 -0.25 mm
 
+##Scintillation plates
 /gate/world/daughters/name OpticalSystem
 /gate/world/daughters/insert box
 /gate/OpticalSystem/geometry/setXLength 100 cm
@@ -97,35 +108,27 @@
 /gate/pixel/cubicArray/setRepeatVector 70 70 0 cm
 /gate/systems/OpticalSystem/pixel/attach pixel
 
+#Output-digitizer
 /gate/digitizer/Singles/insert adder
-
-
-
-#Noisy detector
-
-
 /gate/digitizer/Singles/insert readout
 
 /gate/digitizer/convertor/verbose 0
 /gate/digitizer/verbose 0
 
+#Coded aperture movement
 /gate/wall_front_1/moves/insert translation
-/gate/wall_front_1/translation/setSpeed -64 0 0 mm/s
+/gate/wall_front_1/translation/setSpeed -128 0 0 mm/s
 
-/gate/output/root/setFileName paper_sim/final_paper_sim/64_t2
+#Output files (only root), and location 
+/gate/output/root/setFileName paper_sim/images/out_file
 /gate/output/root/setRootHitFlag 0
 /gate/output/root/setRootSinglesFlag 1
 /gate/output/root/setRootNtupleFlag 0
 /gate/output/root/setRootOpticalFlag 0
 /vis/disable
 
-####target 
 
-
-
-#/control/execute target_hand.mac
-#/control/execute resol_test_dif_materials.mac
-
+#Target; to change the target, please comment lines 132 to 138. Then call /control/execute/target_hand.mac (for hand), and /control/execute/target_box.mac (for squares)
 /gate/world/daughters/name prueba_p
 /gate/world/daughters/insert tessellated
 /gate/prueba_p/geometry/setPathToSTLFile steles/UD1CM.stl
@@ -142,32 +145,20 @@
 /gate/source/xraygun/gps/particle gamma
 /gate/source/xraygun/gps/energytype UserSpectrum
 /gate/source/xraygun/gps/setSpectrumFile spec_120.txt
-#/gate/source/xraygun/gps/setSpectrumFile source_trial.txt
-#/gate/source/xraygun/setActivity 1000000 becquerel
-/gate/source/xraygun/setActivity 1280000000 becquerel
+/gate/source/xraygun/setActivity 640000000 Becquerel
 /gate/source/xraygun/gps/type Plane
 /gate/source/xraygun/gps/shape Circle
 /gate/source/xraygun/gps/radius 0.006 um
-#/gate/source/xraygun/gps/type Point
 /gate/source/xraygun/gps/mintheta 0  deg
-#/gate/source/xraygun/gps/maxtheta  55 deg
-
 /gate/source/xraygun/gps/maxtheta  17.5 deg
-#/gate/source/xraygun/gps/arbint Lin
-#/gate/source/xraygun/gps/minphi 0  deg
-#/gate/source/xraygun/gps/maxphi  360 deg
 /gate/source/xraygun/gps/centre  0 0 -15 cm
-#/gate/source/xraygun/setRotationAxis 1 0 0
-#/gate/source/xraygun/setRotationAngle -45 deg
 /gate/source/xraygun/gps/angtype iso
 
 /gate/random/setEngineName MersenneTwister
-
+#Data acquired every  15.625ms
 /gate/application/setTimeSlice 0.015625 s
-#/gate/application/setTimeSlice 0.0078125s
 
 /gate/application/setTimeStart 0 s
-#/gate/application/setTimeStop 8 s
 /gate/application/setTimeStop 8 s
 /gate/random/setEngineSeed 2268529845635650646
 /gate/output/root/enable
