@@ -1,0 +1,27 @@
+
+####
+#Implementation of Hand as target
+####
+/gate/world/daughters/name hand
+/gate/world/daughters/insert tessellated
+/gate/hand/geometry/setPathToSTLFile steles/hand.stl
+/gate/hand/setMaterial Body
+/gate/hand/vis/forceSolid
+/gate/hand/vis/setColor yellow
+/gate/hand/placement/setTranslation  0 -5 49 cm
+
+#Gold ring
+/gate/hand/daughters/name ring
+/gate/hand/daughters/insert cylinder
+/gate/ring/geometry/setRmin 1.2 cm
+/gate/ring/geometry/setRmax 1.5 cm
+/gate/ring/geometry/setHeight 1.2 cm
+/gate/ring/placement/setRotationAxis 1 0 0
+/gate/ring/placement/setRotationAngle 90. deg
+/gate/ring/placement/setTranslation 0 14 -1 cm
+/gate/ring/setMaterial Gold
+/gate/ring/vis/forceSolid
+/gate/ring/vis/setColor blue
+
+
+
