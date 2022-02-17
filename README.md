@@ -68,5 +68,5 @@ This file contains the Mas-attenuation coefficients to calculate the radiation. 
 ## dose_estimation.mat
 This files estimates the dose per pixel; notice that given that not all energy points are defined mus_skel.mat, an interpolation is done to fill the missing data
 ## dose_hand.mat
-This file calculates the final dose for the hand, based on the results of dose_estimation.mat, the binary mask, and the coded aperture.
+This file calculates the final dose for the hand, based on the results of dose_estimation.mat, the binary mask, and the coded aperture. 
 
