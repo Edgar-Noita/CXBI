@@ -1,0 +1,176 @@
+/gate/geometry/setMaterialDatabase GateMaterials.db
+/gate/world/geometry/setXLength 250. cm
+/gate/world/geometry/setYLength 250. cm
+/gate/world/geometry/setZLength 250. cm
+/gate/world/setMaterial Air
+/gate/physics/addProcess Compton
+/gate/physics/processes/Compton/setModel PenelopeModel
+/gate/physics/addProcess PhotoElectric
+/gate/physics/processes/PhotoElectric/setModel PenelopeModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess Bremsstrahlung e-
+/gate/physics/processes/Bremsstrahlung/setModel PenelopeModel e-
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+/gate/world/daughters/name wall_frame_up
+/gate/world/daughters/insert box
+/gate/wall_frame_up/geometry/setXLength 10 cm
+/gate/wall_frame_up/geometry/setYLength 2 cm
+/gate/wall_frame_up/geometry/setZLength 0.5 mm
+/gate/wall_frame_up/placement/setTranslation 0 4.5 0 cm
+/gate/wall_frame_up/setMaterial Tungsten
+/gate/wall_frame_up/vis/forceSolid
+/gate/wall_frame_up/vis/setColor cyan
+/gate/world/daughters/name wall_frame_down
+/gate/world/daughters/insert box
+/gate/wall_frame_down/geometry/setXLength 10 cm
+/gate/wall_frame_down/geometry/setYLength 2 cm
+/gate/wall_frame_down/geometry/setZLength 0.5 mm
+/gate/wall_frame_down/placement/setTranslation 0 -4.3 0 cm
+/gate/wall_frame_down/setMaterial Tungsten
+/gate/wall_frame_down/vis/forceSolid
+/gate/wall_frame_down/vis/setColor cyan
+/gate/world/daughters/name wall_frame_left
+/gate/world/daughters/insert box
+/gate/wall_frame_left/geometry/setXLength 2 cm
+/gate/wall_frame_left/geometry/setYLength 8 cm
+/gate/wall_frame_left/geometry/setZLength 0.5 mm
+/gate/wall_frame_left/placement/setTranslation -4.2 0 1 cm
+/gate/wall_frame_left/setMaterial Tungsten
+/gate/wall_frame_left/vis/forceSolid
+/gate/wall_frame_left/vis/setColor cyan
+/gate/world/daughters/name wall_frame_right
+/gate/world/daughters/insert box
+/gate/wall_frame_right/geometry/setXLength 2 cm
+/gate/wall_frame_right/geometry/setYLength 8 cm
+/gate/wall_frame_right/geometry/setZLength 0.5 mm
+/gate/wall_frame_right/placement/setTranslation 4.2 0 1 cm
+/gate/wall_frame_right/setMaterial Tungsten
+/gate/wall_frame_right/vis/forceSolid
+/gate/wall_frame_right/vis/setColor cyan
+/gate/world/daughters/name wall_front_1
+/gate/world/daughters/insert tessellated
+/gate/wall_front_1/geometry/setPathToSTLFile steles/64_size.stl
+/gate/wall_front_1/setMaterial Tungsten
+/gate/wall_front_1/vis/forceSolid
+/gate/wall_front_1/vis/setColor cyan
+/gate/wall_front_1/placement/setTranslation -34.5 -34.5 -0.25 mm
+
+/gate/world/daughters/name OpticalSystem
+/gate/world/daughters/insert box
+/gate/OpticalSystem/geometry/setXLength 100 cm
+/gate/OpticalSystem/geometry/setYLength 50 cm
+/gate/OpticalSystem/geometry/setZLength 6 cm
+/gate/OpticalSystem/placement/setTranslation 0 0 20.5 cm
+/gate/OpticalSystem/setMaterial Air
+/gate/OpticalSystem/daughters/name crystal
+/gate/OpticalSystem/daughters/insert box
+/gate/crystal/geometry/setXLength 30. cm
+/gate/crystal/geometry/setYLength 50 cm
+/gate/crystal/geometry/setZLength 5 cm
+/gate/crystal/placement/setTranslation 0 0 0.5 cm
+/gate/crystal/setMaterial NaI
+/gate/crystal/vis/setColor white
+/gate/crystal/vis/forceSolid
+/gate/crystal/repeaters/insert cubicArray
+/gate/crystal/cubicArray/setRepeatNumberX 2
+/gate/crystal/cubicArray/setRepeatNumberY 1
+/gate/crystal/cubicArray/setRepeatNumberZ 1
+/gate/crystal/cubicArray/setRepeatVector 70 0 0.00 cm
+/gate/systems/OpticalSystem/crystal/attach crystal
+/gate/crystal/attachCrystalSD
+/gate/OpticalSystem/daughters/name pixel
+/gate/OpticalSystem/daughters/insert box
+/gate/pixel/geometry/setXLength 30 cm
+/gate/pixel/geometry/setYLength 50 cm
+/gate/pixel/geometry/setZLength 1 cm
+/gate/pixel/setMaterial Silicon
+/gate/pixel/placement/setTranslation 0 0 -2.5 cm
+/gate/pixel/vis/setColor yellow
+/gate/pixel/vis/forceSolid
+/gate/pixel/repeaters/insert cubicArray
+/gate/pixel/cubicArray/setRepeatNumberX 2
+/gate/pixel/cubicArray/setRepeatNumberY 1
+/gate/pixel/cubicArray/setRepeatNumberZ 1
+/gate/pixel/cubicArray/setRepeatVector 70 70 0 cm
+/gate/systems/OpticalSystem/pixel/attach pixel
+
+/gate/digitizer/Singles/insert adder
+
+
+
+#Noisy detector
+
+
+/gate/digitizer/Singles/insert readout
+
+/gate/digitizer/convertor/verbose 0
+/gate/digitizer/verbose 0
+
+/gate/wall_front_1/moves/insert translation
+/gate/wall_front_1/translation/setSpeed -64 0 0 mm/s
+
+/gate/output/root/setFileName paper_sim/final_paper_sim/64_t2
+/gate/output/root/setRootHitFlag 0
+/gate/output/root/setRootSinglesFlag 1
+/gate/output/root/setRootNtupleFlag 0
+/gate/output/root/setRootOpticalFlag 0
+/vis/disable
+
+####target 
+
+
+
+#/control/execute target_hand.mac
+#/control/execute resol_test_dif_materials.mac
+
+/gate/world/daughters/name prueba_p
+/gate/world/daughters/insert tessellated
+/gate/prueba_p/geometry/setPathToSTLFile steles/UD1CM.stl
+/gate/prueba_p/setMaterial Aluminium
+/gate/prueba_p/vis/forceSolid
+/gate/prueba_p/vis/setColor yellow
+/gate/prueba_p/placement/setTranslation -11 -6.3 50 cm
+#####
+/gate/run/initialize
+/vis/disable
+
+#source using data from SPECKT
+/gate/source/addSource xraygun gps
+/gate/source/xraygun/gps/particle gamma
+/gate/source/xraygun/gps/energytype UserSpectrum
+/gate/source/xraygun/gps/setSpectrumFile spec_120.txt
+#/gate/source/xraygun/gps/setSpectrumFile source_trial.txt
+#/gate/source/xraygun/setActivity 1000000 becquerel
+/gate/source/xraygun/setActivity 1280000000 becquerel
+/gate/source/xraygun/gps/type Plane
+/gate/source/xraygun/gps/shape Circle
+/gate/source/xraygun/gps/radius 0.006 um
+#/gate/source/xraygun/gps/type Point
+/gate/source/xraygun/gps/mintheta 0  deg
+#/gate/source/xraygun/gps/maxtheta  55 deg
+
+/gate/source/xraygun/gps/maxtheta  17.5 deg
+#/gate/source/xraygun/gps/arbint Lin
+#/gate/source/xraygun/gps/minphi 0  deg
+#/gate/source/xraygun/gps/maxphi  360 deg
+/gate/source/xraygun/gps/centre  0 0 -15 cm
+#/gate/source/xraygun/setRotationAxis 1 0 0
+#/gate/source/xraygun/setRotationAngle -45 deg
+/gate/source/xraygun/gps/angtype iso
+
+/gate/random/setEngineName MersenneTwister
+
+/gate/application/setTimeSlice 0.015625 s
+#/gate/application/setTimeSlice 0.0078125s
+
+/gate/application/setTimeStart 0 s
+#/gate/application/setTimeStop 8 s
+/gate/application/setTimeStop 8 s
+/gate/random/setEngineSeed 2268529845635650646
+/gate/output/root/enable
+/gate/application/startDAQ
+
+exit
