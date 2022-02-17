@@ -54,6 +54,9 @@ It describes the movement of the pencil-beam over a 64x64 grid.
 ### steles
 This folder contains the stls files implemented in the simulations, including the human shape and the firearm. The Human shape stl was found in https://www.cgtrader.com/items/655802/download-page. The firearm was found in https://cults3d.com/en/3d-model/tool/the-phantom-s-guns-holsters.
 
+### synthetic_data.m
+It generates the CXBI data synthetically, using a random mask generated with matlab
+
 # Data organization-Reconstructions
 This folder contains the files to run the reconstruction algorithms.
 ### admm_bm3d.m
