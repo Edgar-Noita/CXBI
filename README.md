@@ -66,10 +66,10 @@ It generates the CXBI data synthetically, using a random mask generated with mat
 # Data organization-Reconstructions
 This folder contains the files to run the reconstruction algorithms.
 ### admm_bm3d.m
-Matlab file that implementy the ADMM algorihtm, with BM3D as denoiser. The BM3D was dowloaded from 
+Matlab file that implementy the ADMM algorihtm, with BM3D as denoiser. The BM3D was dowloaded from https://webpages.tuni.fi/foi/GCF-BM3D/
 
 ### admm_bm3d_human.m
-Matlab file that implementy the ADMM algorihtm, with BM3D as denoiser, for the human target, using synthetic generation of measurements and noise. The BM3D was dowloaded from
+Matlab file that implementy the ADMM algorihtm, with BM3D as denoiser, for the human target, using synthetic generation of measurements and noise. The BM3D was dowloaded from https://webpages.tuni.fi/foi/GCF-BM3D/
 
 ### cxbi_ffdnet.py
 Python script that implements the ADDM algorithm, with FFDNET as denoiser. The FFDNET files and trained networks were downloaded from https://github.com/cszn/KAIR
