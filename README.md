@@ -22,7 +22,6 @@ In this folder you will find two different folders. The first one called CXBI ru
 It contains all the conditions of the experiment.
 ### spec_120.txt:
 It contains the energy distribution for the implemented x-rays source.This data can be generated using SPEKTR https://istar.jhu.edu/downloads/
-
 ### Target_box.mac: 
 It creates the 4 boxes target
 ### Target_hand.mac: 
