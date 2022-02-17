@@ -1,0 +1,144 @@
+/gate/geometry/setMaterialDatabase GateMaterials.db
+/gate/world/geometry/setXLength 1800. cm
+/gate/world/geometry/setYLength 1000. cm
+/gate/world/geometry/setZLength 1000. cm
+/gate/world/setMaterial Air
+/gate/world/daughters/name source_volume
+/gate/world/daughters/insert cylinder
+/gate/source_volume/geometry/setRmin 0. mm
+/gate/source_volume/geometry/setRmax 1 mm
+/gate/source_volume/geometry/setHeight 1 mm
+/gate/source_volume/placement/setTranslation 0 0 0 cm
+/gate/source_volume/setMaterial Air
+/gate/source_volume/vis/forceWireframe
+/gate/source_volume/vis/setColor blue
+
+/gate/physics/addProcess Compton
+/gate/physics/processes/Compton/setModel PenelopeModel
+/gate/physics/addProcess PhotoElectric
+/gate/physics/processes/PhotoElectric/setModel PenelopeModel
+/gate/physics/addProcess RayleighScattering
+/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+/gate/physics/addProcess Bremsstrahlung e-
+/gate/physics/processes/Bremsstrahlung/setModel PenelopeModel e-
+/gate/physics/addProcess Scintillation
+/gate/physics/addProcess OpticalAbsorption
+/gate/physics/addProcess OpticalRayleigh
+/gate/physics/addProcess OpticalBoundary
+/gate/physics/addProcess OpticalMie
+/gate/physics/addProcess OpticalWLS
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+/gate/world/daughters/name OpticalSystem
+/gate/world/daughters/insert box
+/gate/OpticalSystem/geometry/setXLength 100 cm
+/gate/OpticalSystem/geometry/setYLength 50 cm
+/gate/OpticalSystem/geometry/setZLength 6 cm
+/gate/OpticalSystem/placement/setTranslation 0 0 20.5 cm
+/gate/OpticalSystem/setMaterial Air
+/gate/OpticalSystem/daughters/name crystal
+/gate/OpticalSystem/daughters/insert box
+/gate/crystal/geometry/setXLength 30. cm
+/gate/crystal/geometry/setYLength 50 cm
+/gate/crystal/geometry/setZLength 5 cm
+/gate/crystal/placement/setTranslation 0 0 0.5 cm
+/gate/crystal/setMaterial NaI
+/gate/crystal/vis/setColor white
+/gate/crystal/vis/forceSolid
+/gate/crystal/repeaters/insert cubicArray
+/gate/crystal/cubicArray/setRepeatNumberX 2
+/gate/crystal/cubicArray/setRepeatNumberY 1
+/gate/crystal/cubicArray/setRepeatNumberZ 1
+/gate/crystal/cubicArray/setRepeatVector 70 0 0.00 cm
+/gate/systems/OpticalSystem/crystal/attach crystal
+/gate/crystal/attachCrystalSD
+/gate/OpticalSystem/daughters/name pixel
+/gate/OpticalSystem/daughters/insert box
+/gate/pixel/geometry/setXLength 30 cm
+/gate/pixel/geometry/setYLength 50 cm
+/gate/pixel/geometry/setZLength 1 cm
+/gate/pixel/setMaterial Silicon
+/gate/pixel/placement/setTranslation 0 0 -2.5 cm
+/gate/pixel/vis/setColor yellow
+/gate/pixel/vis/forceSolid
+/gate/pixel/repeaters/insert cubicArray
+/gate/pixel/cubicArray/setRepeatNumberX 2
+/gate/pixel/cubicArray/setRepeatNumberY 1
+/gate/pixel/cubicArray/setRepeatNumberZ 1
+/gate/pixel/cubicArray/setRepeatVector 70 70 0 cm
+/gate/systems/OpticalSystem/pixel/attach pixel
+
+/gate/digitizer/Singles/insert adder
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/convertor/verbose 0
+/gate/digitizer/verbose 0
+
+/gate/source_volume/moves/insert genericMove
+
+/gate/output/root/setFileName paper_sim/count/images/UD_641
+/gate/output/root/setRootHitFlag 0
+/gate/output/root/setRootSinglesFlag 1
+/gate/output/root/setRootNtupleFlag 0
+/gate/output/root/setRootOpticalFlag 0
+/gate/world/daughters/name frame_human
+/gate/world/daughters/insert box
+/gate/frame_human/geometry/setXLength 28 cm
+/gate/frame_human/geometry/setYLength 28 cm
+/gate/frame_human/geometry/setZLength 10 cm
+/gate/frame_human/placement/setTranslation 0 0 53 cm
+/gate/frame_human/setMaterial Water
+/gate/frame_human/vis/forceWireframe
+/gate/frame_human/vis/setColor yellow
+/gate/world/daughters/name gun
+/gate/world/daughters/insert tessellated
+/gate/gun/geometry/setPathToSTLFile steles/database/guns/4.stl
+/gate/gun/setMaterial Gun
+/gate/gun/placement/setRotationAxis 0 1 0
+/gate/gun/placement/setRotationAngle -90 deg
+/gate/gun/vis/forceSolid
+/gate/gun/vis/setColor blue
+/gate/gun/placement/setTranslation 0 0 46 cm
+
+/gate/run/initialize
+/gate/verbose Physic 0
+/gate/verbose Cuts 0
+/gate/verbose SD 0
+/gate/verbose Actions 0
+/gate/verbose Actor 0
+/gate/verbose Step 0
+/gate/verbose Error 0
+/gate/verbose Warning 0
+/gate/verbose Output 0
+/gate/verbose Beam 0
+/gate/verbose Volume 0
+/gate/verbose Image 0
+/gate/verbose Geometry 0
+/gate/verbose Core 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/gate/output/verbose 0
+/gate/source/addSource xraygun gps
+/gate/source/xraygun/gps/particle gamma
+/gate/source/xraygun/gps/energytype UserSpectrum
+/gate/source/xraygun/gps/setSpectrumFile spec_120.txt
+/gate/source/xraygun/setActivity 5000 becquerel
+/gate/source/xraygun/gps/type Plane
+/gate/source/xraygun/gps/shape Circle
+/gate/source/xraygun/gps/radius 0.006 um
+/gate/source/xraygun/gps/mintheta 179.6 deg
+/gate/source/xraygun/gps/maxtheta 180 deg
+/gate/source/xraygun/gps/centre 0 0 0 cm
+/gate/source/xraygun/gps/angtype iso
+/gate/source/xraygun/attachTo source_volume
+
+/gate/random/setEngineName MersenneTwister
+
+/gate/application/setTimeSlice 1 s
+/gate/application/setTimeStart 0 s
+/gate/application/setTimeStop 1024 s
+/gate/random/setEngineSeed 3198611703547087212
+/gate/output/root/enable
+/gate/application/startDAQCluster 0 256 0 s
+
