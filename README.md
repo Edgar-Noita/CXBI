@@ -23,7 +23,7 @@ It contains all the conditions of the experiment.
 ### spec_120.txt:
 It contains the energy distribution for the implemented x-rays source.This data can be generated using SPEKTR https://istar.jhu.edu/downloads/
 
-### Targte_box.mac: 
+### Target_box.mac: 
 It creates the 4 boxes target
 ### Target_hand.mac: 
 It creates hand target
