@@ -120,7 +120,7 @@
 /gate/wall_front_1/translation/setSpeed -128 0 0 mm/s
 
 #Output files (only root), and location 
-/gate/output/root/setFileName paper_sim/images/out_file
+/gate/output/root/setFileName out_file
 /gate/output/root/setRootHitFlag 0
 /gate/output/root/setRootSinglesFlag 1
 /gate/output/root/setRootNtupleFlag 0
