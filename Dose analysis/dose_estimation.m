@@ -46,7 +46,7 @@ area=(len1^2);
 
 dose=dose/area; %divide by the area to cancle out cm^2)
 
-%save('dose_source.mat','dose','area');
+save('dose.mat','dose');
 
 
    
