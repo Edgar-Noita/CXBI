@@ -93,14 +93,8 @@
 /gate/output/root/setRootNtupleFlag 0
 /gate/output/root/setRootOpticalFlag 0
 
-#Target; to change the target, please comment lines 132 to 138. Then call /control/execute/target_hand.mac (for hand), and /control/execute/target_box.mac (for squares)
-/gate/world/daughters/name prueba_p
-/gate/world/daughters/insert tessellated
-/gate/prueba_p/geometry/setPathToSTLFile steles/UD1CM.stl
-/gate/prueba_p/setMaterial Aluminium
-/gate/prueba_p/vis/forceSolid
-/gate/prueba_p/vis/setColor yellow
-/gate/prueba_p/placement/setTranslation -11 -6.3 50 cm
+#Target
+/control/execute/target_human.mac
 #####
 
 /gate/run/initialize
