@@ -91,8 +91,6 @@ This file calculates the final dose for the hand, based on the results of dose_e
 
 This folder contains the captured data during the conducted experiments.
 
-### codes
-This file contains all the original patterns captured in the calibration
 
 ### codes_bin
 
@@ -106,5 +104,7 @@ This files contains a vector representing the captured data with no target
 ### y_target
 
 This files contains a vector representing the captured data with target
+
+The original captured coded apertures can be found in https://drive.google.com/drive/folders/1QvCcSPVx9AgOAdgjCwD_8QW5u-PCDFja?usp=sharing
 
 
