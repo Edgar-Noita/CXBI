@@ -87,3 +87,24 @@ This files estimates the dose per pixel; notice that given that not all energy p
 ### dose_hand.mat
 This file calculates the final dose for the hand, based on the results of dose_estimation.mat, the binary mask, and the coded aperture. 
 
+# Data organization-experiments
+
+This folder contains the captured data during the conducted experiments.
+
+### Codes
+This file contains all the original patterns captured in the calibration
+
+### Codes_simple
+
+This file contains the binarized versions of the patterns
+
+### y_air
+
+This files contains a vector representing the captured data with no target
+
+
+### y_target
+
+This files contains a vector representing the captured data with target
+
+
