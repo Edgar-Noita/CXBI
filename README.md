@@ -1,5 +1,5 @@
 # CXBI
-This repository contains all the GATE/Matlab/Python routines needed to replicate the results of the paper Low-dose X-ray Compton Backscattering Imaging via Structured Light
+This repository contains all the GATE/Matlab/Python routines needed to replicate the results of the paper Low-dose X-ray Compton Backscattering Imaging via Structured Light. Original paper can be found in http://opg.optica.org/oe/abstract.cfm?URI=oe-30-9-15211}; supplementary material can be found in https://opticapublishing.figshare.com/articles/software/Compressive_X-rays_Compton_Backscattering_Imaging_Software/19229052
 
 # Abstract
 
