@@ -107,5 +107,24 @@ This files contains a vector representing the captured data with target
 
 The original captured coded apertures can be found in https://drive.google.com/drive/folders/1QvCcSPVx9AgOAdgjCwD_8QW5u-PCDFja?usp=sharing
 
+# Citation
+
+If used, please cite the following paper:
+
+@article{Salazar:22,
+author = {Edgar Salazar and Xiaokang Liu and Gonzalo Arce},
+journal = {Opt. Express},
+keywords = {Attenuation coefficient; Computed tomography; Hyperspectral imaging; Structured light; Visible light; X ray optics},
+number = {9},
+pages = {15211--15226},
+publisher = {OSA},
+title = {X-ray Compton backscattering imaging via structured light},
+volume = {30},
+month = {Apr},
+year = {2022},
+url = {http://opg.optica.org/oe/abstract.cfm?URI=oe-30-9-15211},
+doi = {10.1364/OE.456610},
+}
+
 
  
